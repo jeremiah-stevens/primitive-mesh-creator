@@ -1,0 +1,18 @@
+{
+    "name": "com.jeremiah-stevens.primitive-mesh-creator.editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:60414b304e1d67d4ebf6bf479bbaaefc"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

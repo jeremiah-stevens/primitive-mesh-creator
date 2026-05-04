@@ -26,13 +26,73 @@ This package strives to provide a simple extension of Unity’s default set of p
 * Primitive Creator Component utilizes the [SerializeReference], which was introduced in Unity 2019.3. Testing has not yet been done for earlier versions of Unity (see [here](https://docs.unity3d.com/2019.3/Documentation/ScriptReference/SerializeReference.html) for more).
 
 ## Getting Started
-TODO: fill this out
+Requires Unity 2019.3 or later.
+
+Install via the Unity Package Manager using the git URL for this repository:
+1. Open **Window > Package Manager**
+2. Click **+** and select **Add package from git URL...**
+3. Enter [[this link](https://github.com/jeremiah-stevens/primitive-mesh-creator.git?path=Packages/com.jeremiah-stevens.primitive-mesh-creator)] and click **Add**
+
+Alternatively, clone or download the repository and add it as a local package via **Add package from disk...**, pointing to the `Packages/com.jeremiah-stevens.primitive-mesh-creator/package.json` file.
 
 ## Usage
-TODO: Fill this out
+
+### Toolbar
+The quickest way to add a primitive to your scene. Navigate to **GameObject > 3D Object > Primitive Creator** and select a shape. This creates a GameObject with a mesh, renderer, and appropriate collider already attached.
+
+### Scripting API
+Use `PrimitiveCreatorUtility` to create meshes or full GameObjects at runtime or in editor scripts.
+
+```csharp
+using PrimitiveCreator;
+using static PrimitiveCreator.PrimitiveCreatorUtility;
+
+// Create a mesh directly
+Mesh tetrahedron = PrimitiveCreatorUtility.CreateMesh(MeshType.Tetrahedron);
+
+// Create a mesh with custom parameters
+MeshCreator.MeshDetails details = PrimitiveCreatorUtility.GetMeshDetails(MeshType.SphereUV);
+details.vertexCount = 200;
+Mesh sphere = PrimitiveCreatorUtility.CreateMesh(MeshType.SphereUV, details);
+
+// Create a fully configured GameObject (mesh + renderer + collider)
+GameObject pyramid = PrimitiveCreatorUtility.CreatePrimitive(MeshType.Pyramid);
+```
+
+### Primitive Creator Component
+For in-editor mesh customization without scripting, add a **Primitive Creator Component** to any GameObject via **GameObject > 3D Object > Primitive Creator Component**. This lets you adjust the mesh type and vertex count directly in the Scene view and save the resulting mesh as an asset.
+
+### Extending with Custom Mesh Types
+To add a new mesh type, subclass `MeshCreator` and implement the required members. The utility will discover it automatically via reflection.
+
+```csharp
+using PrimitiveCreator.MeshCreators;
+using static PrimitiveCreator.PrimitiveCreatorUtility;
+
+public class MeshCreatorCustomShape : MeshCreator
+{
+    public override MeshType MeshType => MeshType.CustomShape; // add to enum
+    public override string DisplayName => "Custom Shape";
+
+    public override Mesh CreateMesh(MeshDetails meshDetails)
+    {
+        // build and return your Mesh here
+    }
+
+    public override Mesh CreateColliderMesh(MeshDetails meshDetails)
+    {
+        // build and return a collider-optimized Mesh here
+    }
+
+    public override int GetClosestViableVertexCount(int proposedVertexCount)
+    {
+        // return the nearest valid vertex count for your shape
+    }
+}
+```
 
 ## Contributing
-TODO: Fill this out
+Contributions are welcome. Please submit any bug reports through GitHub Issues or submit any pull requests. If you'd like to contribute a new mesh type, please extend the Mesh Creator pattern.
 
 ## License
-TODO: Fill this out
+MIT (see [LICENSE](LICENSE))

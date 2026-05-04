@@ -1,0 +1,24 @@
+{
+  "name": "com.jeremiah-stevens.primitive-mesh-creator",
+  "version": "1.0.0",
+  "displayName": "Primitive Mesh Creator",
+  "description": "Primitive Mesh Creator is a tool for creating common primitive meshes directly in the Unity 3D engine. The tool offers an expanded set of common primitive shapes (Pyramid, Polyhedra, Triangle, etc) right alongside the default Primitive Objects from Unity (Cube, Sphere, etc.) It also includes a number of tools for creating custom shapes through a simple API or directly in the Unity Editor itself. The tool is also built to extensibly support new shapes with relative ease.",
+  "author": {
+    "name": "Jeremiah Stevens",
+    "url": "https://github.com/jeremiah-stevens/primitive-mesh-creator"
+  },
+  "licensesUrl": "https://github.com/jeremiah-stevens/primitive-mesh-creator?tab=MIT-1-ov-file#readme",
+  "keywords": ["mesh", "primitives", "procedural"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeremiah-stevens/primitive-mesh-creator.git"
+  },
+  "samples": [
+    {
+        "displayName": "Examples",
+        "description": "Example scenes for showcasing included primitive meshes",
+        "path": "Samples~/Examples"
+    }
+  ],
+  "unity": "2019.3"
+}
