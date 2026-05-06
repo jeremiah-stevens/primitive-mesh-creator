@@ -3,6 +3,8 @@ An extended set of primitive mesh shapes for Unity, with in-editor and scripting
 
 Requires Unity 2019.3 or later.
 
+![...](Documentation~/images/comparison.jpg)
+
 ## Shapes
 | Shape | Type |
 |---|---|
@@ -18,6 +20,7 @@ Requires Unity 2019.3 or later.
 
 ## Toolbar
 **GameObject > 3D Object > Primitive Creator**: creates a GameObject with mesh, renderer, and collider.
+![...](Documentation~/images/toolbar.jpg)
 
 ## Scripting API
 
@@ -39,6 +42,12 @@ GameObject obj = PrimitiveCreatorUtility.CreatePrimitive(MeshType.Pyramid);
 
 ## In-Editor Customization
 Add a **Primitive Creator Component** via **GameObject > 3D Object > Primitive Creator Component** to adjust mesh type and vertex count in the Scene view and save the result as an asset.
+![...](Documentation~/images/component.gif)
+
+## Physics
+Each model comes with an optimized mesh collider, allowing for physics operations on the object.
+
+![...](Documentation~/images/colliders.gif)
 
 ## Extending
 Subclass `MeshCreator` and implement `CreateMesh`, `CreateColliderMesh`, and `GetClosestViableVertexCount`. The utility will discover it automatically via reflection.

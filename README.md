@@ -1,6 +1,8 @@
 # primitive-mesh-creator
 Primitive Mesh Creator is a tool for creating common primitive meshes directly in the Unity 3D engine. The tool offers an expanded set of common primitive shapes (Pyramid, Polyhedra, Triangle, etc) right alongside the default Primitive Objects from Unity (Cube, Sphere, etc.) It also includes a number of tools for creating custom shapes through a simple API or directly in the Unity Editor itself. The tool is also built to extensibly support new shapes with relative ease.
 
+![...](Packages/com.jeremiah-stevens.primitive-mesh-creator/Documentation~/images/comparison.jpg)
+
 ## Features
 * Access an extended set of 3D Objects directly in the Unity Toolbar (**Game Object > 3D Object > Primitive Creator**)
 * Adds an extended set of 3D Collider components directly in the Add Component menu (**Add Component > Primitive Creator**)
@@ -39,6 +41,7 @@ Alternatively, clone or download the repository and add it as a local package vi
 
 ### Toolbar
 The quickest way to add a primitive to your scene. Navigate to **GameObject > 3D Object > Primitive Creator** and select a shape. This creates a GameObject with a mesh, renderer, and appropriate collider already attached.
+![...](Packages/com.jeremiah-stevens.primitive-mesh-creator/Documentation~/images/toolbar.jpg)
 
 ### Scripting API
 Use `PrimitiveCreatorUtility` to create meshes or full GameObjects at runtime or in editor scripts.
@@ -61,6 +64,13 @@ GameObject pyramid = PrimitiveCreatorUtility.CreatePrimitive(MeshType.Pyramid);
 
 ### Primitive Creator Component
 For in-editor mesh customization without scripting, add a **Primitive Creator Component** to any GameObject via **GameObject > 3D Object > Primitive Creator Component**. This lets you adjust the mesh type and vertex count directly in the Scene view and save the resulting mesh as an asset.
+
+![...](Packages/com.jeremiah-stevens.primitive-mesh-creator/Documentation~/images/component.gif)
+
+### Physics
+Each model comes with its own optimized mesh collider, allowing for physics operations on your new objects.
+
+![...](Packages/com.jeremiah-stevens.primitive-mesh-creator/Documentation~/images/colliders.gif)
 
 ### Extending with Custom Mesh Types
 To add a new mesh type, subclass `MeshCreator` and implement the required members. The utility will discover it automatically via reflection.
